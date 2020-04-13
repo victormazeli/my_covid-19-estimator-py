@@ -5,7 +5,7 @@ def estimator(data):
 
  currentlyInfectedSevere = int(data.get(reportedCases) * 50)
 
-# CHALLENGE 1
+  # CHALLENGE 1
 
  def covid19ImpactEstimator():
    global currentlyInfectedImpact
@@ -118,6 +118,7 @@ def estimator(data):
 
 
   }
+  
   return data
 
  
