@@ -84,44 +84,33 @@ dollarsInFlightSevere = dollarSevere()
 
 data = {
 
-  data = {
+  'data': data,
+  'impact': {
+    'currentlyInfected': currentlyInfectedImpact,
+    'infectionByRequestedTime': infectionByRequestedTimeImpact,
+    'severeCaseByRequestedTime': severeCaseByRequestedTimeImpact,
+    'hospitalBedByrequestedTime': hospitalBedByrequestedTimeImpact,
+    'casesForICUByRequestedTime': casesForICUByRequestedTimeImpact,
+    'casesForVentilatorsByrequestedTime': casesForVentilatorsByrequestedTimeImpact,
+    'dollarsInFlight': dollarsInFlightImpact
 
-    'data': data
-  }
 
-estimate = {
-
-  impact = {
-
-     'currentlyInfected': currentlyInfectedImpact,
-     'infectionByRequestedTime': infectionByRequestedTimeImpact,
-     'severeCaseByRequestedTime': severeCaseByRequestedTimeImpact,
-     'hospitalBedByrequestedTime': hospitalBedByrequestedTimeImpact,
-     'casesForICUByRequestedTime': casesForICUByRequestedTimeImpact,
-     'casesForVentilatorsByrequestedTime': casesForVentilatorsByrequestedTimeImpact,
-     'dollarsInFlight': dollarsInFlightImpact
-
- }
- severeImpact = {
-
+  },
+ 'severeImpact': {
    'currentlyInfected': currentlyInfectedSevere,
-     'infectionByRequestedTime': infectionByRequestedTimeSevere,
-     'severeCaseByRequestedTime': severeCaseByRequestedTimeSevere,
-     'hospitalBedByrequestedTime': hospitalBedByrequestedTimeSevere,
-     'casesForICUByRequestedTime': casesForICUByRequestedTimeSevere,
-     'casesForVentilatorsByrequestedTime': casesForVentilatorsByrequestedTimeSevere,
-     'dollarsInFlight': dollarsInFlightSevere
-
- }
-
-
-
- }
-
-
-  }
+   'infectionByRequestedTime': infectionByRequestedTimeSevere,
+   'severeCaseByRequestedTime': severeCaseByRequestedTimeSevere,
+   'hospitalBedByrequestedTime': hospitalBedByrequestedTimeSevere,
+   'casesForICUByRequestedTime': casesForICUByRequestedTimeSevere,
+   'casesForVentilatorsByrequestedTime': casesForVentilatorsByrequestedTimeSevere,
+   'dollarsInFlight': dollarsInFlightSevere
   
+     
 
+ },
+
+
+}
 
   
   return data
