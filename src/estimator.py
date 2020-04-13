@@ -1,84 +1,107 @@
+import math
+
 def estimator(data):
+  region = data['name']
+  avgAge = data['avgAge']
+  avgDailyIncomeInUSD = data['avgDailyIncomeInUSD']
+  avgDailyIncomePopulation = data['avgDailyIncomePopulation']
+  periodType = data['periodImType']
+  timeToElapse = data['timeToElapse']
+  reportedCases = data['reportedCases']
+  population = data['population']
+  totalHospitalBeds = data['totalHospitalBeds']
 
-  # ASSESSMENT BEGINING
-
- currentlyInfectedImpact = int(data.get(reportedCases) * 10)
- currentlyInfectedSevere = int(data.get(reportedCases) * 50)
+  
+ currentlyInfectedImpact = reportedCases * 10
+ currentlyInfectedSevere = reportedCases * 50
 
  # CHALLENGE 1
 
- def covid19ImpactEstimator():
+ def covid19ImpactEstimator(periodIm, timeIm):
    global currentlyInfectedImpact
-   time = data.get(timeElapse)
-   factor = time / 3
-   im_value = int(currentlyInfectedImpact * (2 ^ factor))
-   return im_value
-  
-  
-  
-infectionByRequestedTimeImpact = covid19ImpactEstimator()
+  if periodIm == 'days':
+    factor = timeIm / 3
+    currentlyInfectedImpact * (2 ^ factor)
+  elif periodIm == 'weeks':
+    factor = (timeIm * 7) / 3
+    currentlyInfectedImpact * (2 ^ factor)
+  else:
+    factor = (timeIm * 30) / 3
+    currentlyInfectedImpact * (2 ^ factor)
 
-def covid19SeveretEstimator():
+infectionByRequestedTimeImpact = math.floor(covid19ImpactEstimator(periodType, timeToElapse))
+
+def covid19SeveretEstimator(periodS, timeS):
   global currentlyInfectedSevere
-  time = data.get(timeElapse)
-  factor = time / 3
-  s_value = int(currentlyInfectedSevere * (2 ^ factor))
-  return s_value
+  if periodS == 'days':
+    factor = timeS / 3
+    currentlyInfectedSevere * (2 ^ factor)
+  elif periodS == 'weeks':
+    factor = (timeS * 7) / 3
+    currentlyInfectedSevere * (2 ^ factor)
+  else:
+    factor = (timeS * 30) / 3
+    currentlyInfectedSevere * (2 ^ factor)
+  
 
-infectionByRequestedTimeSevere = covid19SevereEstimator()
+infectionByRequestedTimeSevere = math.floor(covid19SevereEstimator(periodType, timeToElapse))
 
   # CHALLENGE 2
 
-severeCaseByRequestedTimeImpact = int(infectionByRequestedTimeImpact * 0.15)
+severeCaseByRequestedTimeImpact = infectionByRequestedTimeImpact * 0.15
 
-severeCaseByRequestedTimeSevere = int(infectionByRequestedTimeSevere * 0.15)
+severeCaseByRequestedTimeSevere = infectionByRequestedTimeSevere * 0.15
 
 def hospitalBedByrequestedImpact():
   global severeCaseByRequestedTimeImpact
-  hos_im_value  = data.get(totalHospitalBeds) * 0.35
-  im_available_beds = int(severeCaseByRequestedTimeImpact - hos_im_value)
+  global totalHospitalBeds
+  hos_im_value  = totalHospitalBeds * 0.35
+  im_available_beds = severeCaseByRequestedTimeImpact - hos_im_value
   return im_available_beds
    
      
-hospitalBedByrequestedTimeImpact = hospitalBedByrequestedImpact()
+hospitalBedByrequestedTimeImpact = math.floor(hospitalBedByrequestedImpact())
 
 def hospitalBedByrequestedSevere():
   global severeCaseByRequestedTimeSevere
   hos_s_value  = data.get(totalHospitalBeds) * 0.35
-  s_available_beds = int(severeCaseByRequestedTimeSevere - hos_s_value)
+  s_available_beds = severeCaseByRequestedTimeSevere - hos_s_value
   return s_available_beds
 
-hospitalBedByrequestedTimeSevere = hospitalBedByrequestedSevere()
+hospitalBedByrequestedTimeSevere = math.floor(hospitalBedByrequestedSevere())
 
   #  CHALLENGE 3
 
-casesForICUByRequestedTimeImpact = int(infectionByRequestedTimeImpact * 0.05)
+casesForICUByRequestedTimeImpact = infectionByRequestedTimeImpact * 0.05
 
-casesForICUByRequestedTimeSevere = int(infectionByRequestedTimeSevere * 0.05)
+casesForICUByRequestedTimeSevere = infectionByRequestedTimeSevere * 0.05
 
-casesForVentilatorsByrequestedTimeImpact = int(infectionByRequestedTimeImpact * 0.02)
+casesForVentilatorsByrequestedTimeImpact = infectionByRequestedTimeImpact * 0.02
 
-casesForVentilatorsByrequestedTimeSevere = int(infectionByRequestedTimeSevere * 0.02)
+casesForVentilatorsByrequestedTimeSevere = infectionByRequestedTimeSevere * 0.02
 
 def dollarImpact():
     global infectionByRequestedTimeImpact
-    daily_income_impact = data.get(avgDailyIncomeInUSD)
+    global avgDailyIncomeInUSD
+    global avgDailyIncomePopulation
+    global timeToElapse
+    # daily_income_impact = data.get(avgDailyIncomeInUSD)
     population_impact = data.get(avgDailyIncomePopulation)
-    period_impact = data.get(timeToElapse)
-    compute_impact = int((infectionByRequestedTimeImpact * population_impact * daily_income_impact) / period_impact)
+    periodIm_impact = data.get(timeToElapse)
+    compute_impact = (infectionByRequestedTimeImpact * avgDailyIncomePopulation * avgDailyIncomeInUSD) / timeToElapse
     return compute_impact
 
-dollarsInFlightImpact = dollarImpact()
+dollarsInFlightImpact = math.floor(dollarImpact())
 
 def dollarSevere():
     global infectionByRequestedTimeSevere
-    daily_income_severe = data.get(avgDailyIncomeInUSD)
-    population_severe = data.get(avgDailyIncomePopulation)
-    period_severe = data.get(timeToElapse)
-    compute_severe = int((infectionByRequestedTimeSevere * population_severe * daily_income_severe) / period_severe)
+    global avgDailyIncomeInUSD
+    global avgDailyIncomePopulation
+    global timeToElapse
+    compute_severe = (infectionByRequestedTimeImpact * avgDailyIncomePopulation * avgDailyIncomeInUSD) / timeToElapse
     return compute_severe
 
-dollarsInFlightSevere = dollarSevere()
+dollarsInFlightSevere = math.floor(dollarSevere())
 
 # OUTPUTS
 
@@ -112,8 +135,11 @@ data = {
 
 }
 
+  return data
   
-return data
+
+  
+ 
 
  
 
