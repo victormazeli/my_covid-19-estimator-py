@@ -1,4 +1,4 @@
-  import math
+import math
 
 def estimator(data):
   region = data['name']
@@ -11,13 +11,10 @@ def estimator(data):
   population = data['population']
   totalHospitalBeds = data['totalHospitalBeds']
 
-  
- currentlyInfectedImpact = reportedCases * 10
- currentlyInfectedSevere = reportedCases * 50
+  currentlyInfectedImpact = reportedCases * 10
+  currentlyInfectedSevere = reportedCases * 50
 
- # CHALLENGE 1
-
- def covid19ImpactEstimator(periodIm, timeIm):
+  def covid19ImpactEstimator(periodIm, timeIm):
    global currentlyInfectedImpact
   if periodIm == 'days':
     factor = timeIm / 3
@@ -28,8 +25,9 @@ def estimator(data):
   else:
     factor = (timeIm * 30) / 3
     currentlyInfectedImpact * (2 ^ factor)
-
+    
 infectionByRequestedTimeImpact = math.floor(covid19ImpactEstimator(periodType, timeToElapse))
+
 
 def covid19SeveretEstimator(periodS, timeS):
   global currentlyInfectedSevere
