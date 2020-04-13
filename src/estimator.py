@@ -6,7 +6,7 @@ def estimator(data):
  currentlyInfectedSevere = int(data.get(reportedCases) * 50)
 
  # CHALLENGE 1
- 
+
  def covid19ImpactEstimator():
    global currentlyInfectedImpact
    time = data.get(timeElapse)
@@ -42,11 +42,11 @@ def hospitalBedByrequestedImpact():
      
 hospitalBedByrequestedTimeImpact = hospitalBedByrequestedImpact()
 
- def hospitalBedByrequestedSevere():
-    global severeCaseByRequestedTimeSevere
-    hos_s_value  = data.get(totalHospitalBeds) * 0.35
-    s_available_beds = int(severeCaseByRequestedTimeSevere - hos_s_value)
-    return s_available_beds
+def hospitalBedByrequestedSevere():
+  global severeCaseByRequestedTimeSevere
+  hos_s_value  = data.get(totalHospitalBeds) * 0.35
+  s_available_beds = int(severeCaseByRequestedTimeSevere - hos_s_value)
+  return s_available_beds
 
 hospitalBedByrequestedTimeSevere = hospitalBedByrequestedSevere()
 
