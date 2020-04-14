@@ -2,14 +2,14 @@ import math
 
 
 def estimator(data):
-    # region = data['name']
-    # avgAge = data['avgAge']
+    region = data['name']
+    avgAge = data['avgAge']
     avgDailyIncomeInUSD = data['avgDailyIncomeInUSD']
     avgDailyIncomePopulation = data['avgDailyIncomePopulation']
     periodType = data['periodImType']
     timeToElapse = data['timeToElapse']
     reportedCases = data['reportedCases']
-    # population = data['population']
+    population = data['population']
     totalHospitalBeds = data['totalHospitalBeds']
     
     currentlyInfectedImpact = reportedCases * 10
@@ -104,24 +104,26 @@ def estimator(data):
     
     data = {
       'data': data,
-      'impact': {
-        'currentlyInfected': currentlyInfectedImpact,
-        'infectionByRequestedTime': infectionByRequestedTimeImpact,
-        'severeCaseByRequestedTime': severeCaseByRequestedTimeImpact,
-        'hospitalBedByrequestedTime': hospitalBedByrequestedTimeImpact,
-        'casesForICUByRequestedTime': casesForICUByRequestedTimeImpact,
-        'casesForVentilatorsByrequestedTime': casesForVentilatorsByrequestedTimeImpact,
-        'dollarsInFlight': dollarsInFlightImpact
+      'estimate': {
+        'impact': {
+          'currentlyInfected': currentlyInfectedImpact,
+          'infectionByRequestedTime': infectionByRequestedTimeImpact,
+          'severeCaseByRequestedTime': severeCaseByRequestedTimeImpact,
+          'hospitalBedByrequestedTime': hospitalBedByrequestedTimeImpact,
+          'casesForICUByRequestedTime': casesForICUByRequestedTimeImpact,
+          'casesForVentilatorsByrequestedTime': casesForVentilatorsByrequestedTimeImpact,
+          'dollarsInFlight': dollarsInFlightImpact
 
-      },
-      'severeImpact': {
-        'currentlyInfected': currentlyInfectedSevere,
-        'infectionByRequestedTime': infectionByRequestedTimeSevere,
-        'severeCaseByRequestedTime': severeCaseByRequestedTimeSevere,
-        'hospitalBedByrequestedTime': hospitalBedByrequestedTimeSevere,
-        'casesForICUByRequestedTime': casesForICUByRequestedTimeSevere,
-        'casesForVentilatorsByrequestedTime': casesForVentilatorsByrequestedTimeSevere,
-        'dollarsInFlight': dollarsInFlightSevere
+        },
+        'severeImpact': {
+          'currentlyInfected': currentlyInfectedSevere,
+          'infectionByRequestedTime': infectionByRequestedTimeSevere,
+          'severeCaseByRequestedTime': severeCaseByRequestedTimeSevere,
+          'hospitalBedByrequestedTime': hospitalBedByrequestedTimeSevere,
+          'casesForICUByRequestedTime': casesForICUByRequestedTimeSevere,
+          'casesForVentilatorsByrequestedTime': casesForVentilatorsByrequestedTimeSevere,
+          'dollarsInFlight': dollarsInFlightSevere
+        },
 
       },
 
