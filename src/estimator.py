@@ -2,15 +2,12 @@ import math
 
 
 def estimator(data):
-    region = data['name']
-    avgAge = data['avgAge']
-    avgDailyIncomeInUSD = data['avgDailyIncomeInUSD']
-    avgDailyIncomePopulation = data['avgDailyIncomePopulation']
+    # region = data['name']
+    # avgAge = data['avgAge']
     periodType = data['periodImType']
     timeToElapse = data['timeToElapse']
     reportedCases = data['reportedCases']
-    population = data['population']
-    totalHospitalBeds = data['totalHospitalBeds']
+    # population = data['population']
     
     currentlyInfectedImpact = reportedCases * 10
     currentlyInfectedSevere = reportedCases * 50
@@ -57,6 +54,8 @@ def estimator(data):
     
     severeCaseByRequestedTimeSevere = infectionByRequestedTimeSevere * 0.15
     
+    totalHospitalBeds = data['totalHospitalBeds']
+    
     def hospitalBedByrequestedImpact():
       global severeCaseByRequestedTimeImpact
       global totalHospitalBeds
@@ -68,7 +67,7 @@ def estimator(data):
     
     def hospitalBedByrequestedSevere():
       global severeCaseByRequestedTimeSevere
-      hos_s_value  = data.get(totalHospitalBeds) * 0.35
+      hos_s_value  = totalHospitalBeds * 0.35
       s_available_beds = severeCaseByRequestedTimeSevere - hos_s_value
       return s_available_beds
     
@@ -81,6 +80,9 @@ def estimator(data):
     casesForVentilatorsByrequestedTimeImpact = infectionByRequestedTimeImpact * 0.02
     
     casesForVentilatorsByrequestedTimeSevere = infectionByRequestedTimeSevere * 0.02
+    
+    avgDailyIncomeInUSD = data['avgDailyIncomeInUSD']
+    avgDailyIncomePopulation = data['avgDailyIncomePopulation']
     
     def dollarImpact():
       global infectionByRequestedTimeImpact
