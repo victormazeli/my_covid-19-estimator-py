@@ -15,17 +15,17 @@ def estimator(data):
     def covid19ImpactEstimator(periodIm, timeIm):
       if periodIm == 'days':
         factor = timeIm / 3
-        value = currentlyInfectedImpact * (2 ^ factor)
+        value = math.floor(currentlyInfectedImpact * math.pow(2, factor))
         return value
       
       elif periodIm == 'weeks':
         factor = (timeIm * 7) / 3
-        value = currentlyInfectedImpact * (2 ^ factor)
+        value = math.floor(currentlyInfectedImpact * math.pow(2, factor))
         return value
         
       else:
         factor = (timeIm * 30) / 3
-        value = currentlyInfectedImpact * (2 ^ factor)
+        value = math.floor(currentlyInfectedImpact * math.pow(2, factor))
         return value
     
     infectionByRequestedTimeImpact = math.floor(covid19ImpactEstimator(periodType, timeToElapse))
@@ -33,17 +33,17 @@ def estimator(data):
     def covid19SevereEstimator(periodS, timeS):
       if periodS == 'days':
         factor = timeS / 3
-        value = currentlyInfectedSevere * (2 ^ factor)
+        value = math.floor(currentlyInfectedSevere * math.pow(2, factor))
         return value
       
       elif periodS == 'weeks':
         factor = (timeS * 7) / 3
-        value = currentlyInfectedSevere * (2 ^ factor)
+        value = math.floor(currentlyInfectedSevere * math.pow(2, factor))
         return value
       
       else:
         factor = (timeS * 30) / 3
-        value = currentlyInfectedSevere * (2 ^ factor)
+        value = math.floor(currentlyInfectedSevere * math.pow(2, factor))
         return value
     
     infectionByRequestedTimeSevere = math.floor(covid19SevereEstimator(periodType, timeToElapse))
