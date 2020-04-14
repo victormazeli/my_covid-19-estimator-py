@@ -4,7 +4,7 @@ import math
 def estimator(data):
     # region = data['name']
     # avgAge = data['avgAge']
-    periodType = data['periodImType']
+    periodType = data['periodType']
     timeToElapse = data['timeToElapse']
     reportedCases = data['reportedCases']
     # population = data['population']
