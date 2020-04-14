@@ -1,14 +1,15 @@
 import math
 
-  def estimator(data):
-    region = data['name']
-    avgAge = data['avgAge']
+
+def estimator(data):
+    # region = data['name']
+    # avgAge = data['avgAge']
     avgDailyIncomeInUSD = data['avgDailyIncomeInUSD']
     avgDailyIncomePopulation = data['avgDailyIncomePopulation']
     periodType = data['periodImType']
     timeToElapse = data['timeToElapse']
     reportedCases = data['reportedCases']
-    population = data['population']
+    # population = data['population']
     totalHospitalBeds = data['totalHospitalBeds']
     
     currentlyInfectedImpact = reportedCases * 10
@@ -33,7 +34,7 @@ import math
     
     infectionByRequestedTimeImpact = math.floor(covid19ImpactEstimator(periodType, timeToElapse))
     
-    def covid19SeveretEstimator(periodS, timeS):
+    def covid19SevereEstimator(periodS, timeS):
       global currentlyInfectedSevere
       if periodS == 'days':
         factor = timeS / 3
@@ -123,29 +124,6 @@ import math
         'dollarsInFlight': dollarsInFlightSevere
 
       },
-   
-   
 
     }
-    
-    return data
-  
-
-  
- 
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
+    return data     
