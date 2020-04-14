@@ -91,30 +91,29 @@ def estimator(data):
     
     dollarsInFlightSevere = math.floor(dollarSevere())
     
+    impact = {
+      'currentlyInfected': currentlyInfectedImpact,
+      'infectionByRequestedTime': infectionByRequestedTimeImpact,
+      'severeCaseByRequestedTime': severeCaseByRequestedTimeImpact,
+      'hospitalBedByrequestedTime': hospitalBedByrequestedTimeImpact,
+      'casesForICUByRequestedTime': casesForICUByRequestedTimeImpact,
+      'casesForVentilatorsByrequestedTime': casesForVentilatorsByrequestedTimeImpact,
+      'dollarsInFlight': dollarsInFlightImpact
+    }
+    
+    severeImpact = {
+      'currentlyInfected': currentlyInfectedSevere,
+      'infectionByRequestedTime': infectionByRequestedTimeSevere,
+      'severeCaseByRequestedTime': severeCaseByRequestedTimeSevere,
+      'hospitalBedByrequestedTime': hospitalBedByrequestedTimeSevere,
+      'casesForICUByRequestedTime': casesForICUByRequestedTimeSevere,
+      'casesForVentilatorsByrequestedTime': casesForVentilatorsByrequestedTimeSevere,
+      'dollarsInFlight': dollarsInFlightSevere
+    }
+    
     data = {
       'data': data,
-      'estimate': {
-        'impact': {
-          'currentlyInfected': currentlyInfectedImpact,
-          'infectionByRequestedTime': infectionByRequestedTimeImpact,
-          'severeCaseByRequestedTime': severeCaseByRequestedTimeImpact,
-          'hospitalBedByrequestedTime': hospitalBedByrequestedTimeImpact,
-          'casesForICUByRequestedTime': casesForICUByRequestedTimeImpact,
-          'casesForVentilatorsByrequestedTime': casesForVentilatorsByrequestedTimeImpact,
-          'dollarsInFlight': dollarsInFlightImpact
-
-        },
-        'severeImpact': {
-          'currentlyInfected': currentlyInfectedSevere,
-          'infectionByRequestedTime': infectionByRequestedTimeSevere,
-          'severeCaseByRequestedTime': severeCaseByRequestedTimeSevere,
-          'hospitalBedByrequestedTime': hospitalBedByrequestedTimeSevere,
-          'casesForICUByRequestedTime': casesForICUByRequestedTimeSevere,
-          'casesForVentilatorsByrequestedTime': casesForVentilatorsByrequestedTimeSevere,
-          'dollarsInFlight': dollarsInFlightSevere
-        },
-
-      },
-
+      'impact': impact,
+      'severeImpact': severeImpact
     }
     return data     
