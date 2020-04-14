@@ -76,8 +76,8 @@ def estimator(data):
     
     casesForVentilatorsByrequestedTimeSevere = infectionByRequestedTimeSevere * 0.02
     
-    avgDailyIncomeInUSD = data['avgDailyIncomeInUSD']
-    avgDailyIncomePopulation = data['avgDailyIncomePopulation']
+    avgDailyIncomeInUSD = data['region']['avgDailyIncomeInUSD']
+    avgDailyIncomePopulation = data['region']['avgDailyIncomePopulation']
     
     def dollarImpact():
       compute_impact = (infectionByRequestedTimeImpact * avgDailyIncomePopulation * avgDailyIncomeInUSD) / timeToElapse
