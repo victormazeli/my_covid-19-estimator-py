@@ -13,7 +13,6 @@ def estimator(data):
     currentlyInfectedSevere = reportedCases * 50
     
     def covid19ImpactEstimator(periodIm, timeIm):
-      global currentlyInfectedImpact
       if periodIm == 'days':
         factor = timeIm / 3
         value = currentlyInfectedImpact * (2 ^ factor)
@@ -32,7 +31,6 @@ def estimator(data):
     infectionByRequestedTimeImpact = math.floor(covid19ImpactEstimator(periodType, timeToElapse))
     
     def covid19SevereEstimator(periodS, timeS):
-      global currentlyInfectedSevere
       if periodS == 'days':
         factor = timeS / 3
         value = currentlyInfectedSevere * (2 ^ factor)
@@ -57,8 +55,6 @@ def estimator(data):
     totalHospitalBeds = data['totalHospitalBeds']
     
     def hospitalBedByrequestedImpact():
-      global severeCaseByRequestedTimeImpact
-      global totalHospitalBeds
       hos_im_value  = totalHospitalBeds * 0.35
       im_available_beds = severeCaseByRequestedTimeImpact - hos_im_value
       return im_available_beds
@@ -66,7 +62,6 @@ def estimator(data):
     hospitalBedByrequestedTimeImpact = math.floor(hospitalBedByrequestedImpact())
     
     def hospitalBedByrequestedSevere():
-      global severeCaseByRequestedTimeSevere
       hos_s_value  = totalHospitalBeds * 0.35
       s_available_beds = severeCaseByRequestedTimeSevere - hos_s_value
       return s_available_beds
@@ -85,20 +80,12 @@ def estimator(data):
     avgDailyIncomePopulation = data['avgDailyIncomePopulation']
     
     def dollarImpact():
-      global infectionByRequestedTimeImpact
-      global avgDailyIncomeInUSD
-      global avgDailyIncomePopulation
-      global timeToElapse
       compute_impact = (infectionByRequestedTimeImpact * avgDailyIncomePopulation * avgDailyIncomeInUSD) / timeToElapse
       return compute_impact
     
     dollarsInFlightImpact = math.floor(dollarImpact())
     
     def dollarSevere():
-      global infectionByRequestedTimeSevere
-      global avgDailyIncomeInUSD
-      global avgDailyIncomePopulation
-      global timeToElapse
       compute_severe = (infectionByRequestedTimeImpact * avgDailyIncomePopulation * avgDailyIncomeInUSD) / timeToElapse
       return compute_severe
     
