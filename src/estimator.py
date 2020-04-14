@@ -10,7 +10,7 @@ def estimator(data):
   reportedCases = data['reportedCases']
   population = data['population']
   totalHospitalBeds = data['totalHospitalBeds']
-
+  
   currentlyInfectedImpact = reportedCases * 10
   currentlyInfectedSevere = reportedCases * 50
   
