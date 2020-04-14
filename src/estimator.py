@@ -95,7 +95,7 @@ def estimator(data):
       'currentlyInfected': currentlyInfectedImpact,
       'infectionsByRequestedTime': infectionByRequestedTimeImpact,
       'severeCaseByRequestedTime': severeCaseByRequestedTimeImpact,
-      'hospitalBedByrequestedTime': hospitalBedByrequestedTimeImpact,
+      'hospitalBedsByrequestedTime': hospitalBedByrequestedTimeImpact,
       'casesForICUByRequestedTime': casesForICUByRequestedTimeImpact,
       'casesForVentilatorsByrequestedTime': casesForVentilatorsByrequestedTimeImpact,
       'dollarsInFlight': dollarsInFlightImpact
@@ -105,7 +105,7 @@ def estimator(data):
       'currentlyInfected': currentlyInfectedSevere,
       'infectionsByRequestedTime': infectionByRequestedTimeSevere,
       'severeCaseByRequestedTime': severeCaseByRequestedTimeSevere,
-      'hospitalBedByrequestedTime': hospitalBedByrequestedTimeSevere,
+      'hospitalBedsByrequestedTime': hospitalBedByrequestedTimeSevere,
       'casesForICUByRequestedTime': casesForICUByRequestedTimeSevere,
       'casesForVentilatorsByrequestedTime': casesForVentilatorsByrequestedTimeSevere,
       'dollarsInFlight': dollarsInFlightSevere
